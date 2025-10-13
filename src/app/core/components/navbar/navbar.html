@@ -1,0 +1,58 @@
+<!-- Navbar fija -->
+<mat-toolbar class="navbar">
+  <!-- Logo -->
+  <a class="logo" routerLink="/">LURESA</a>
+
+  <!-- Botón hamburguesa -->
+  <button mat-icon-button class="menu-btn" (click)="sidenav.toggle()" aria-label="Abrir menú">
+    <mat-icon>{{ sidenav.opened ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <!-- Navegación (desktop) -->
+  <nav class="nav-links desktop-only">
+    <a routerLink="/inicio">Inicio</a>
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/servicios">Servicios</a>
+    <a routerLink="/contacto">Contacto</a>
+  </nav>
+
+  <!-- Acciones -->
+  <div class="actions">
+    <div class="cart-icon" routerLink="/carrito">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="cart-badge">{{ cartCount }}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/login">Iniciar sesión</button>
+      <button mat-menu-item routerLink="/perfil">Mi cuenta</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<!-- Contenedor que NO empuja el contenido -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="start"
+    class="mobile-sidenav"
+    (backdropClick)="sidenav.close()">
+    <nav class="mobile-links">
+      <a routerLink="/inicio" (click)="sidenav.close()">Inicio</a>
+      <a routerLink="/productos" (click)="sidenav.close()">Productos</a>
+      <a routerLink="/servicios" (click)="sidenav.close()">Servicios</a>
+      <a routerLink="/contacto" (click)="sidenav.close()">Contacto</a>
+      <mat-divider></mat-divider>
+      <a routerLink="/carrito" (click)="sidenav.close()">Carrito ({{ cartCount }})</a>
+      <a routerLink="/login" (click)="sidenav.close()">Iniciar sesión</a>
+    </nav>
+  </mat-sidenav>
+
+  <!-- Contenido principal (no empujado) -->
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
