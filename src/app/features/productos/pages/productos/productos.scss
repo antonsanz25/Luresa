@@ -1,35 +1,201 @@
-mat-card {
-  max-width: 500px;
-  margin: 2rem auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-radius: 12px;
-  background: #fff;
+/* === VARIABLES === */
+$color-bg: #0f1b2b;
+$color-accent: #fdd700;
+$color-white: #ffffff;
+$color-gray: #cbd5e1;
+$color-card: #16263d;
 
-  mat-card-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #2c3e50;
+/* === CONTENEDOR GENERAL === */
+.productos-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f1b2b 20%, #142a44 80%);
+  padding: 60px 40px;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === ENCABEZADO === */
+.encabezado {
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: $color-accent;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
   }
 
-  mat-list {
-    padding: 0;
+  p {
+    font-size: 17px;
+    color: lighten($color-gray, 10%);
+    line-height: 1.6;
+  }
+}
 
-    mat-list-item {
-      font-size: 1.1rem;
-      padding: 0.75rem 1.5rem;
-      border-bottom: 1px solid #e0e0e0;
-      color: #34495e;
+/* === FILTROS === */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  background-color: lighten($color-card, 2%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 50px;
+  transition: all 0.3s ease;
 
-      &:last-child {
-        border-bottom: none;
-      }
+  mat-form-field {
+    width: 260px;
+
+    .mat-form-field-outline {
+      color: rgba($color-white, 0.4);
+    }
+
+    .mat-form-field-label {
+      color: $color-accent !important;
+      font-weight: 600;
+    }
+
+    input,
+    mat-select {
+      color: $color-white !important;
+      font-size: 15px;
+    }
+
+    mat-icon {
+      color: lighten($color-gray, 10%);
+    }
+  }
+
+  .campo-precio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      font-size: 15px;
+      font-weight: 600;
+      color: $color-accent;
+      margin-bottom: 6px;
+    }
+
+    mat-slider {
+      width: 250px;
+      --mdc-slider-handle-color: $color-accent;
+      --mdc-slider-active-track-color: $color-accent;
+      --mdc-slider-inactive-track-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .precio-valor {
+      margin-top: 8px;
+      font-size: 14px;
+      color: lighten($color-gray, 20%);
+    }
+  }
+}
+
+/* === GRID DE PRODUCTOS === */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* === TARJETA DE PRODUCTO === */
+.producto-item {
+  background-color: $color-card;
+  border-radius: 14px;
+  overflow: hidden;
+  color: $color-white;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  }
+
+  img {
+    height: 190px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  mat-card-content {
+    padding: 18px;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: $color-accent;
+      margin: 10px 0;
+    }
+
+    .descripcion {
+      font-size: 14px;
+      color: lighten($color-gray, 10%);
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: lighten($color-gray, 20%);
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 14px 0 18px;
+
+    .boton-comprar {
+      background-color: $color-accent;
+      color: $color-bg;
+      font-weight: 600;
+      transition: all 0.2s ease;
 
       &:hover {
-        background: #f5f5f5;
-        cursor: pointer;
+        background-color: lighten($color-accent, 12%);
+        transform: scale(1.05);
       }
+    }
+
+    .boton-detalle {
+      border-color: $color-accent;
+      color: $color-accent;
+      font-weight: 600;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgba($color-accent, 0.1);
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .filtros {
+    flex-direction: column;
+    align-items: center;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .campo-precio mat-slider {
+      width: 100%;
     }
   }
 }

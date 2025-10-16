@@ -34,6 +34,8 @@
       font-size: 3rem;
       font-weight: 800;
       letter-spacing: 2px;
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.14);
+    }
 
       span {
         color: #ffd700;
@@ -73,7 +75,6 @@
       }
     }
   }
-}
 
 .features {
   background: #111827;

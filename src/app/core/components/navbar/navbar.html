@@ -41,13 +41,13 @@
     class="mobile-sidenav"
     (backdropClick)="sidenav.close()">
     <nav class="mobile-links">
-      <a routerLink="/inicio" (click)="sidenav.close()">Inicio</a>
-      <a routerLink="/productos" (click)="sidenav.close()">Productos</a>
-      <a routerLink="/servicios" (click)="sidenav.close()">Servicios</a>
-      <a routerLink="/contacto" (click)="sidenav.close()">Contacto</a>
+      <a mat-button routerLink="/inicio" (click)="sidenav.close()">Inicio</a>
+      <a mat-button routerLink="/productos" (click)="sidenav.close()">Productos</a>
+      <a mat-button routerLink="/servicios" (click)="sidenav.close()">Servicios</a>
+      <a mat-button routerLink="/contacto" (click)="sidenav.close()">Contacto</a>
       <mat-divider></mat-divider>
-      <a routerLink="/carrito" (click)="sidenav.close()">Carrito ({{ cartCount }})</a>
-      <a routerLink="/login" (click)="sidenav.close()">Iniciar sesión</a>
+      <a mat-button routerLink="/carrito" (click)="sidenav.close()">Carrito ({{ cartCount }})</a>
+      <a mat-button routerLink="/login" (click)="sidenav.close()">Iniciar sesión</a>
     </nav>
   </mat-sidenav>
 

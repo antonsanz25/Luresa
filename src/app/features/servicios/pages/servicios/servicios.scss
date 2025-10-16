@@ -1,0 +1,126 @@
+/* === VARIABLES DE COLOR === */
+$color-bg: #0f1b2b;
+$color-accent: #fdd700;
+$color-white: #ffffff;
+$color-gray: #cbd5e1;
+/* === ESTILOS GENERALES === */
+.servicios-container {
+  background-color: $color-bg;
+  color: $color-white;
+  padding: 4rem 2rem;
+  font-family: 'Inter', sans-serif;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $color-accent;
+  }
+
+  .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    color: $color-gray;
+    font-size: 1.1rem;
+  }
+}
+
+/* === GRID LAYOUT === */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* === CARD === */
+.card {
+  background-color: lighten($color-bg, 5%);
+  border: 1px solid rgba($color-white, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba($color-accent, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba($color-accent, 0.2);
+  }
+}
+
+/* === ICONOS Y ENCABEZADO === */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    fill: $color-accent;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: $color-white;
+  }
+}
+
+/* === CONTENIDO === */
+.lead {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: $color-gray;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  li {
+    margin-bottom: 0.5rem;
+    color: lighten($color-gray, 5%);
+  }
+}
+
+/* === FOOTER === */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba($color-white, 0.05);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: $color-gray;
+
+  .btn {
+    background-color: $color-accent;
+    color: $color-bg;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: darken($color-accent, 10%);
+      color: $color-white;
+    }
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
