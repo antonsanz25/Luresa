@@ -1,0 +1,62 @@
+<section class="contact-section">
+  <div class="container">
+    <h2>Contáctanos</h2>
+    <p class="lead">¿Tienes dudas o quieres más información? Completa el formulario y te responderemos pronto.</p>
+
+    <div class="contact-grid">
+      <!-- Formulario -->
+      <form class="contact-form card" id="contactForm" autocomplete="off">
+        <input type="text" id="name" name="name" placeholder="Nombre completo" required />
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required />
+        <textarea id="message" name="message" placeholder="Tu mensaje" required></textarea>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button type="submit">Enviar mensaje</button>
+          <small>Responderemos en 24-48 horas</small>
+        </div>
+      </form>
+
+      <!-- Información de contacto -->
+      <div class="card contact-info">
+        <h3>Información</h3>
+        <p><strong>Correo:</strong> contacto@luresa.com</p>
+        <p><strong>Teléfono:</strong> +51 976 932 626</p>
+        <p><strong>Dirección:</strong> JR.ASAMBLEA 346 FRENTE AL COLEGIO LUIS CARRANZA</p>
+
+        <div class="social-icons" aria-label="Redes sociales">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Mensaje enviado. ¡Gracias!</div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const toast = document.getElementById('toast');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.classList.add('disabled');
+        btn.textContent = 'Enviando...';
+
+        setTimeout(() => {
+          btn.textContent = 'Enviado';
+          toast.classList.add('show');
+          setTimeout(() => {
+            form.reset();
+            btn.disabled = false;
+            btn.classList.remove('disabled');
+            btn.textContent = 'Enviar mensaje';
+            setTimeout(() => toast.classList.remove('show'), 2000);
+          }, 700);
+        }, 900);
+      });
+    })();
+  </script>
+</section>

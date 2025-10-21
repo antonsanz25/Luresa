@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,8 +13,6 @@ import { MatDividerModule } from '@angular/material/divider';
   selector: 'app-productos',
   standalone: true,
   imports: [
-    NgFor,
-    NgIf,
     FormsModule,
     MatCardModule,
     MatFormFieldModule,

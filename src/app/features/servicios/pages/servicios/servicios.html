@@ -6,113 +6,130 @@
   </p>
 
   <div class="grid">
-    <!-- Consultoría -->
-    <article class="card" role="article" aria-labelledby="srv-consultoria">
+    <section class="servicios-container" aria-labelledby="servicios-title">
+  <div class="grid">
+    <!-- 1. Venta de productos -->
+    <article class="card" role="article" aria-labelledby="srv-productos">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5" fill="currentColor"/></svg>
-        <h3 id="srv-consultoria">Consultoría estratégica</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6l3-3h12l3 3v15H3V6z" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-productos">Venta de productos</h3>
       </header>
-      <p class="lead">Análisis personalizado para definir la mejor estrategia digital y tecnológica para tu negocio.</p>
+      <p class="lead">Productos de calidad y a buen precio.</p>
       <ul>
-        <li>Auditoría inicial y hoja de ruta</li>
-        <li>Plan de crecimiento y KPI claros</li>
-        <li>Recomendaciones técnicas y de marketing</li>
+        <li>Equipos de cómputo, accesorios y repuestos</li>
+        <li>Licencias originales de software</li>
+        <li>Precios competitivos y promociones</li>
       </ul>
       <footer class="card-footer">
-        <small>Entrega típica: 2–4 semanas</small>
-        <a class="btn" [routerLink]="'/servicios/consultoria'">Ver más</a>
+        <small>Entrega inmediata o según disponibilidad</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
 
-    <!-- Desarrollo Web -->
-    <article class="card" role="article" aria-labelledby="srv-dev">
+    <!-- 2. Soporte Técnico -->
+    <article class="card" role="article" aria-labelledby="srv-soporte">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v2H3V4zm0 6h18v2H3v-2zm0 6h18v2H3v-2z" fill="currentColor"/></svg>
-        <h3 id="srv-dev">Desarrollo web</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.6,10a7,7,0,1,1,10.8,0" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="14" r="1" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-soporte">Soporte Técnico</h3>
       </header>
-      <p class="lead">Sitios y aplicaciones escalables, optimizados para rendimiento y accesibilidad.</p>
+      <p class="lead">Asistencia personalizada en cada compra o instalación.</p>
       <ul>
-        <li>Front-end moderno (Angular/React/Vue)</li>
-        <li>Back-end seguro y APIs REST/GraphQL</li>
-        <li>Hosting, CI/CD y despliegue automático</li>
+        <li>Atención remota o presencial</li>
+        <li>Diagnóstico de fallas y soluciones</li>
+        <li>Guía en tiempo real</li>
       </ul>
       <footer class="card-footer">
-        <small>Proyectos desde 4 semanas</small>
-        <a class="btn" [routerLink]="'/servicios/desarrollo-web'">Ver más</a>
+        <small>Disponible 24/7 bajo contrato</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
 
-    <!-- Diseño Gráfico -->
-    <article class="card" role="article" aria-labelledby="srv-design">
+    <!-- 3. Envíos Seguros -->
+    <article class="card" role="article" aria-labelledby="srv-envios">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 7-7 13-7-13 7-7z" fill="currentColor"/></svg>
-        <h3 id="srv-design">Diseño gráfico & UX</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h13v13H3zM16 9h5v10h-5z" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-envios">Envíos Seguros</h3>
       </header>
-      <p class="lead">Diseños con foco en el usuario: identidad visual, interfaces claras y experiencia coherente.</p>
+      <p class="lead">Entregas rápidas y confiables.</p>
       <ul>
-        <li>Branding y guías de estilo</li>
-        <li>Prototipos interactivos y pruebas de usabilidad</li>
-        <li>Materiales para web y redes sociales</li>
+        <li>Cobertura local y nacional</li>
+        <li>Empaque seguro y rastreo en tiempo real</li>
+        <li>Garantía de recepción</li>
       </ul>
       <footer class="card-footer">
-        <small>Plazos típicos: 1–3 semanas</small>
-        <a class="btn" [routerLink]="'/servicios/diseno-grafico'">Ver más</a>
+        <small>1 a 3 días hábiles</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
 
-    <!-- Marketing Digital -->
-    <article class="card" role="article" aria-labelledby="srv-marketing">
+    <!-- 4. Reparación de Hardware -->
+    <article class="card" role="article" aria-labelledby="srv-reparacion">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h4v10H3V11zm7-7h4v17h-4V4zm7 4h4v13h-4V8z" fill="currentColor"/></svg>
-        <h3 id="srv-marketing">Marketing digital</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.7 7.3l-4-4a1 1 0 00-1.4 0L13 5.6 18.4 11l2.3-2.3a1 1 0 000-1.4zM3 17v4h4l10.3-10.3-4-4L3 17z" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-reparacion">Reparación de Hardware</h3>
       </header>
-      <p class="lead">Estrategias de adquisición, remarketing y contenido para impulsar ventas y visibilidad.</p>
+      <p class="lead">Dejamos como nuevos tus productos.</p>
       <ul>
-        <li>Campañas PPC y anuncios sociales</li>
-        <li>Marketing de contenidos y automatizaciones</li>
-        <li>Reportes mensuales con métricas accionables</li>
+        <li>Cambio de partes dañadas</li>
+        <li>Limpieza interna y mantenimiento</li>
+        <li>Diagnóstico completo</li>
       </ul>
       <footer class="card-footer">
-        <small>Planes mensuales disponibles</small>
-        <a class="btn" [routerLink]="'/servicios/marketing-digital'">Ver más</a>
+        <small>De 1 a 5 días según complejidad</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
 
-    <!-- Mantenimiento y Soporte -->
-    <article class="card" role="article" aria-labelledby="srv-maintenance">
+    <!-- 5. Instalación de Software -->
+    <article class="card" role="article" aria-labelledby="srv-software">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l3 6h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" fill="currentColor"/></svg>
-        <h3 id="srv-maintenance">Mantenimiento & soporte</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2L6 9h4v6h4V9h4z" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-software">Instalación de Software</h3>
       </header>
-      <p class="lead">Soporte continuado para garantizar uptime, seguridad y actualizaciones sin sorpresas.</p>
+      <p class="lead">Instalación y configuración de sistemas operativos y software.</p>
       <ul>
-        <li>Backups y monitorización 24/7</li>
-        <li>Parches de seguridad y actualizaciones</li>
-        <li>Soporte por tickets y SLA opcional</li>
+        <li>Windows, Linux, Office, antivirus, etc.</li>
+        <li>Configuración de redes y usuarios</li>
+        <li>Activación y licenciamiento</li>
       </ul>
       <footer class="card-footer">
-        <small>Contratos mensuales o por proyecto</small>
-        <a class="btn" [routerLink]="'/servicios/mantenimiento-soporte'">Ver más</a>
+        <small>En el mismo día o al siguiente</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
 
-    <!-- SEO -->
-    <article class="card" role="article" aria-labelledby="srv-seo">
+    <!-- 6. Actualización de Hardware -->
+    <article class="card" role="article" aria-labelledby="srv-actualizacion">
       <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7 3 3 6.5 3 11c0 5 4.5 9 9 9s9-4 9-9c0-4.5-4-8-9-8z" fill="currentColor"/></svg>
-        <h3 id="srv-seo">SEO & performance</h3>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4h16v2H4V4zm0 6h16v2H4v-2zm0 6h10v2H4v-2z" fill="currentColor"/>
+        </svg>
+        <h3 id="srv-actualizacion">Actualización de Hardware</h3>
       </header>
-      <p class="lead">Optimización técnica y de contenido para mejorar posiciones y velocidad de carga.</p>
+      <p class="lead">Mejoramos el rendimiento de tus equipos.</p>
       <ul>
-        <li>Auditoría SEO y plan de keywords</li>
-        <li>Optimización de Core Web Vitals</li>
-        <li>Linkbuilding y seguimiento de rankings</li>
+        <li>Ampliación de memoria RAM y SSD</li>
+        <li>Actualización de tarjeta gráfica o CPU</li>
+        <li>Instalación de nuevos periféricos</li>
       </ul>
       <footer class="card-footer">
-        <small>Resultados en 3–6 meses</small>
-        <a class="btn" [routerLink]="'/servicios/seo'">Ver más</a>
+        <small>De 2 a 4 días según disponibilidad</small>
+        <a class="btn" href="#">Ver más</a>
       </footer>
     </article>
+  </div>
+</section>
   </div>
 
 </section>

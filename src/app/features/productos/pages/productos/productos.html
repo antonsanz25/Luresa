@@ -23,7 +23,9 @@
       <mat-label>Categoría</mat-label>
       <mat-select [(ngModel)]="categoriaSeleccionada">
         <mat-option value="">Todas</mat-option>
-        <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
+        @for (cat of categorias; track cat) {
+          <mat-option [value]="cat">{{ cat }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
 
@@ -43,7 +45,7 @@
 
   <!-- Sección de productos -->
   <section class="productos-grid">
-    <ng-container *ngFor="let item of obtenerProductosFiltrados()">
+    @for (item of obtenerProductosFiltrados(); track item.nombre) {
       <mat-card class="producto-item">
         <img mat-card-image [src]="item.imagen" alt="{{ item.nombre }}">
         <mat-card-content>
@@ -62,6 +64,6 @@
           </button>
         </mat-card-actions>
       </mat-card>
-    </ng-container>
+    }
   </section>
 </div>

@@ -3,10 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Navbar } from "./core/components/navbar/navbar";
 import { Footer } from "./core/components/footer/footer";
-import { Home } from "./features/home/pages/home/home";
-import { Contacto } from "./features/contacto/pages/contacto/contacto";
-import { Servicios } from './features/servicios/pages/servicios/servicios';
-import { Productos } from "./features/productos/pages/productos/productos";
 
 @Component({
   selector: 'app-root',
@@ -16,10 +12,6 @@ import { Productos } from "./features/productos/pages/productos/productos";
     RouterOutlet,
     Navbar,
     Footer,
-    Home,
-    Servicios,
-    Contacto,
-    Productos
 ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
