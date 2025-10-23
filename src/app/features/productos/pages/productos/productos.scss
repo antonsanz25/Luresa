@@ -1,6 +1,6 @@
 /* === VARIABLES === */
 $color-bg: #0f1b2b;
-$color-accent: #fdd700;
+$color-accent: #a5cf47;
 $color-white: #ffffff;
 $color-gray: #cbd5e1;
 $color-card: #16263d;
@@ -9,6 +9,9 @@ $color-card: #16263d;
 .productos-container {
   min-height: 100vh;
   background: linear-gradient(180deg, #0f1b2b 20%, #142a44 80%);
+  /* Ojo: Si el encabezado (h1/p) NO forma parte del contenedor de filtros,
+     ajustar este padding top puede ser necesario, o modificar el 'top' del filtro.
+     Lo dejamos en 60px por ahora, asumiendo que el encabezado está antes. */
   padding: 60px 40px;
   color: $color-white;
   display: flex;
@@ -37,7 +40,8 @@ $color-card: #16263d;
   }
 }
 
-/* === FILTROS === */
+/* ----------------------------------------------------- */
+/* === FILTROS (CORRECCIÓN CLAVE AQUÍ) === */
 .filtros {
   display: flex;
   flex-wrap: wrap;
@@ -51,6 +55,13 @@ $color-card: #16263d;
   max-width: 1100px;
   margin-bottom: 50px;
   transition: all 0.3s ease;
+
+  /* --- INICIO DE CORRECCIÓN --- */
+  /* Propiedades para hacerlo "sticky" */
+  position: sticky;
+  top: 0px; /* Se pegará a la parte superior de la ventana del navegador */
+  z-index: 10; /* Asegura que esté por encima de los productos */
+  /* --- FIN DE CORRECCIÓN --- */
 
   mat-form-field {
     width: 260px;
@@ -101,11 +112,13 @@ $color-card: #16263d;
     }
   }
 }
+/* ----------------------------------------------------- */
 
 /* === GRID DE PRODUCTOS === */
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* FUERZA 4 COLUMNAS IGUALES (1fr) */
+  grid-template-columns: repeat(4, 1fr);
   gap: 35px;
   width: 100%;
   max-width: 1200px;
@@ -120,6 +133,11 @@ $color-card: #16263d;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
+  /* Mantener tamaño uniforme */
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
@@ -133,6 +151,7 @@ $color-card: #16263d;
 
   mat-card-content {
     padding: 18px;
+    flex-grow: 1;
 
     h3 {
       font-size: 20px;
@@ -145,6 +164,9 @@ $color-card: #16263d;
       font-size: 14px;
       color: lighten($color-gray, 10%);
       margin-bottom: 8px;
+      max-height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .meta {
@@ -159,20 +181,23 @@ $color-card: #16263d;
     padding: 14px 0 18px;
 
     .boton-comprar {
-      background-color: $color-accent;
+      background-color: #a5cf47;
       color: $color-bg;
+      width: 150px;
       font-weight: 600;
       transition: all 0.2s ease;
 
       &:hover {
-        background-color: lighten($color-accent, 12%);
+        background-color: lighten(rgba(159, 233, 75, 0.699), 12%);
+        color: $color-white;
         transform: scale(1.05);
       }
     }
 
     .boton-detalle {
-      border-color: $color-accent;
-      color: $color-accent;
+      border-color: #a5cf47;
+      color: #a5cf47;
+      width: 100px;
       font-weight: 600;
       transition: all 0.2s ease;
 
@@ -186,6 +211,12 @@ $color-card: #16263d;
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .producto-item {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
   .filtros {
     flex-direction: column;
     align-items: center;
@@ -198,4 +229,32 @@ $color-card: #16263d;
       width: 100%;
     }
   }
+}
+.sin-resultados {
+  text-align: center;
+  color: lighten($color-gray, 10%);
+  font-style: italic;
+  margin-top: 40px;
+}
+
+
+/* === ANIMACIONES === */
+
+/* Fade suave al aparecer los productos */
+.producto-item {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Transición al actualizar la grilla */
+.productos-grid {
+  transition: all 0.3s ease;
 }

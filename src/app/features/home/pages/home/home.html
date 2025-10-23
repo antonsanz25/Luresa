@@ -42,10 +42,101 @@
   </div>
 </section>
 
-<section class="about">
-  <h2>Sobre Nosotros</h2>
-  <p>
-    En <strong>LURESA</strong>, nos dedicamos a ofrecer soluciones innovadoras y confiables
-    que combinan tecnología, diseño y compromiso con la excelencia.
-  </p>
+<section class="about" aria-labelledby="about-title">
+  <div class="about-grid">
+    <!-- Texto principal -->
+    <div class="about-text fade-in" id="about-title">
+      <h2>Acerca de Nosotros</h2>
+      <p>
+        En <strong>LURESA</strong> nos dedicamos a ofrecer soluciones integrales que combinan
+        tecnología, diseño y un firme compromiso con la excelencia. Desde la venta de productos
+        hasta la reparación y actualización de hardware, trabajamos para que cada experiencia
+        con nosotros sea confiable, eficiente y satisfactoria.
+      </p>
+      <p>
+        Nuestro enfoque es brindar atención personalizada, procesos claros y productos seleccionados
+        con criterios de calidad y durabilidad. Valoramos la confianza de nuestros clientes y
+        buscamos mejorar continuamente con innovación y profesionalismo.
+      </p>
+
+      <!-- Misión y Visión -->
+      <div class="mission-vision slide-up">
+        <div class="card-mini">
+          <mat-icon aria-hidden="true">flag</mat-icon>
+          <h3>Misión</h3>
+          <p>Proveer soluciones tecnológicas y servicios de soporte que permitan a nuestros clientes optimizar sus operaciones y disfrutar de productos confiables.</p>
+        </div>
+        <div class="card-mini">
+          <mat-icon aria-hidden="true">visibility</mat-icon>
+          <h3>Visión</h3>
+          <p>Ser referente regional en calidad, servicio y asesoría técnica, ofreciendo innovación y soporte continuo.</p>
+        </div>
+      </div>
+
+      <!-- Valores -->
+      <div class="values fade-in-delay">
+        <h3>Valores</h3>
+        <ul class="chips">
+          <li><mat-icon>check_circle</mat-icon> Calidad</li>
+          <li><mat-icon>people</mat-icon> Cercanía</li>
+          <li><mat-icon>thumb_up</mat-icon> Confianza</li>
+          <li><mat-icon>bolt</mat-icon> Innovación</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Media y estadísticas -->
+    <div class="about-media">
+      <div class="image-card hover-raise mat-elevation-z4" role="img" aria-label="Equipo LURESA">
+        <img src="./about.png" alt="Equipo LURESA" />
+      </div>
+
+      <div class="stats">
+        <div class="stat pulse">
+          <h4 class="count" data-target="1200">1,200+</h4>
+          <p>Clientes satisfechos</p>
+        </div>
+        <div class="stat pulse">
+          <h4 class="count" data-target="8">8</h4>
+          <p>Años en el mercado</p>
+        </div>
+        <div class="stat pulse">
+          <h4 class="count" data-target="5000">5,000+</h4>
+          <p>Productos vendidos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Equipo -->
+  <div class="team slide-up">
+    <h3>Nuestro Equipo</h3>
+    <div class="avatars">
+      <div class="avatar-card hover-raise" title="Gerente General">
+        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/copesa/EOPGPE4XMZCLXEZPSHPK6UHP5A.JPG" alt="Gerente General" />
+        <div class="info">
+          <strong>María Pérez</strong>
+          <span>Gerente General</span>
+        </div>
+      </div>
+      <div class="avatar-card hover-raise" title="Soporte Técnico">
+        <img src="https://www.esan.edu.pe/images/blog/2017/03/10/principal-sobrecarga-responsabilidades.jpg" alt="Soporte Técnico" />
+        <div class="info">
+          <strong>Carlos Gómez</strong>
+          <span>Soporte Técnico</span>
+        </div>
+      </div>
+      <div class="avatar-card hover-raise" title="Ventas">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtO4kPmCJ3OzVGH6iql3C-3ngjeGFfhsirpg&s" alt="Ventas" />
+        <div class="info">
+          <strong>Ana López</strong>
+          <span>Ventas</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Notas para estilos y animaciones (agregar en tu CSS global o component):
+ - .fade-in, .slide-up, .fade-in-delay, .hover-raise, .pulse, .mat-elevation-z4, .chips, .about-grid, .about-media, .avatar-card, etc.
+ - Para animar los contadores, puedes usar un pequeño script que lea data-target y haga el conteo con requestAnimationFrame. -->

@@ -1,5 +1,5 @@
 <div class="productos-container">
-  <!-- Sección de encabezado -->
+  <!-- 🧭 ENCABEZADO -->
   <section class="encabezado">
     <h1>Lista de Productos</h1>
     <p>
@@ -8,20 +8,23 @@
     </p>
   </section>
 
-  <!-- Sección de búsqueda y filtros -->
+  <!-- 🎛️ FILTROS -->
   <section class="filtros">
+    <!-- 🔍 Búsqueda -->
     <mat-form-field appearance="outline" class="campo-busqueda">
       <mat-label>Buscar producto</mat-label>
       <input
         matInput
         placeholder="Ej. Laptop, Monitor, Impresora"
-        [(ngModel)]="filtroBusqueda" />
+        [(ngModel)]="filtroBusqueda"
+        (input)="actualizarFiltro()" />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
+    <!-- 🗂️ Categoría -->
     <mat-form-field appearance="outline" class="campo-categoria">
       <mat-label>Categoría</mat-label>
-      <mat-select [(ngModel)]="categoriaSeleccionada">
+      <mat-select [(ngModel)]="categoriaSeleccionada" (selectionChange)="actualizarFiltro()">
         <mat-option value="">Todas</mat-option>
         @for (cat of categorias; track cat) {
           <mat-option [value]="cat">{{ cat }}</mat-option>
@@ -29,41 +32,47 @@
       </mat-select>
     </mat-form-field>
 
+    <!-- 💰 Precio -->
     <div class="campo-precio">
       <label>Rango de precio</label>
       <mat-slider
         min="0"
-        max="5000"
+        max="10000"
         step="100"
         thumbLabel
         tickInterval="1000"
-        [(ngModel)]="precioMaximo">
+        [(ngModel)]="precioMaximo"
+        (input)="actualizarFiltro()">
       </mat-slider>
       <span class="precio-valor">Hasta ${{ precioMaximo }}</span>
     </div>
   </section>
 
-  <!-- Sección de productos -->
+  <!-- 🧩 LISTADO DE PRODUCTOS -->
   <section class="productos-grid">
-    @for (item of obtenerProductosFiltrados(); track item.nombre) {
-      <mat-card class="producto-item">
-        <img mat-card-image [src]="item.imagen" alt="{{ item.nombre }}">
-        <mat-card-content>
-          <h3>{{ item.nombre }}</h3>
-          <p class="descripcion">{{ item.descripcion }}</p>
-          <p class="meta">
-            💲 {{ item.precio }} | Cantidad: {{ item.cantidad }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="accent" class="boton-comprar">
-            🛒 Agregar al carrito
-          </button>
-          <button mat-stroked-button color="primary" class="boton-detalle">
-            🔍 Ver detalles
-          </button>
-        </mat-card-actions>
-      </mat-card>
+    @if (productosFiltrados.length === 0) {
+      <p class="sin-resultados">No hay productos que coincidan con los filtros.</p>
+    } @else {
+      @for (item of productosFiltrados; track item.nombre) {
+        <mat-card class="producto-item">
+          <img mat-card-image [src]="item.imagen" alt="{{ item.nombre }}">
+          <mat-card-content>
+            <h3>{{ item.nombre }}</h3>
+            <p class="descripcion">{{ item.descripcion }}</p>
+            <p class="meta">
+              💲 {{ item.precio }} | Cantidad: {{ item.cantidad }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" class="boton-comprar">
+              🛒 Agregar al carrito
+            </button>
+            <button mat-stroked-button color="primary" class="boton-detalle">
+              🔍 Ver detalles
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
     }
   </section>
 </div>

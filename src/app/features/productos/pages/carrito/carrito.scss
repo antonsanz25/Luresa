@@ -1,0 +1,160 @@
+// Paleta de colores personalizada
+$color-bg: #0f1b2b;
+$color-accent: #a5cf47;
+$color-white: #ffffff;
+$color-gray: #cbd5e1;
+$color-card: #16263d;
+
+// ======== ESTILO GENERAL ========
+:host {
+  display: block;
+  background-color: $color-bg;
+  color: $color-white;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+// ======== ENCABEZADO ========
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: $color-accent;
+  text-align: center;
+}
+
+.descripcion-pagina {
+  color: $color-gray;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+// ======== LISTADO DEL CARRITO ========
+.carrito-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// ======== ITEM DEL CARRITO ========
+.carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-card;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  }
+}
+
+// ======== IMAGEN DEL PRODUCTO ========
+.imagen-producto {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+// ======== DETALLES ========
+.detalles-producto {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  h3 {
+    font-size: 1.2rem;
+    color: $color-white;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $color-gray;
+  }
+
+  input[type="number"] {
+    width: 60px;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 6px;
+    background-color: lighten($color-card, 5%);
+    color: $color-white;
+    text-align: center;
+
+    &:focus {
+      outline: 2px solid $color-accent;
+    }
+  }
+}
+
+// ======== BOTÓN DE ELIMINAR ========
+button[color="warn"] {
+  color: $color-gray;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// ======== MENSAJE VACÍO ========
+.sin-resultados {
+  text-align: center;
+  color: $color-gray;
+  font-style: italic;
+  margin-top: 3rem;
+}
+
+// ======== TOTAL ========
+.total-carrito {
+  background-color: darken($color-card, 3%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: right;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+  h3 {
+    margin-bottom: 1rem;
+    color: $color-accent;
+    font-size: 1.3rem;
+  }
+
+  button {
+    background-color: $color-accent;
+    color: $color-bg;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: lighten($color-accent, 5%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ======== RESPONSIVE ========
+@media (max-width: 600px) {
+  .carrito-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .total-carrito {
+    text-align: center;
+  }
+}
+

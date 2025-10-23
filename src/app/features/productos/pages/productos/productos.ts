@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,12 +21,13 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSliderModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   templateUrl: './productos.html',
   styleUrls: ['./productos.scss']
 })
-export class Productos {
+export class Productos implements OnInit {
+  // 🧾 Lista de productos
   lista = [
     {
       nombre: 'Laptop',
@@ -94,21 +95,35 @@ export class Productos {
     }
   ];
 
-  // === Variables para filtros ===
+  // 🎚️ Filtros
   filtroBusqueda: string = '';
   categoriaSeleccionada: string = '';
-  precioMaximo: number = 5000;
+  precioMaximo: number = 10000;
 
   categorias = ['Computadoras', 'Componentes', 'Perifericos', 'Tablets'];
 
-  // === Método de filtrado (sin necesidad de pipe externo) ===
-  obtenerProductosFiltrados() {
-    return this.lista.filter((item) => {
-      const coincideTexto = item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase());
+  // 💾 Lista filtrada
+  productosFiltrados = [...this.lista];
+
+  ngOnInit() {
+    this.actualizarFiltro(); // inicializar
+  }
+
+  // 🔍 Filtrado reactivo
+  actualizarFiltro() {
+    const texto = this.filtroBusqueda.toLowerCase();
+
+    this.productosFiltrados = this.lista.filter(item => {
+      const coincideTexto = item.nombre.toLowerCase().includes(texto);
       const coincideCategoria =
         !this.categoriaSeleccionada || item.categoria === this.categoriaSeleccionada;
       const coincidePrecio = item.precio <= this.precioMaximo;
       return coincideTexto && coincideCategoria && coincidePrecio;
     });
   }
+
+  comprarProducto(producto: any) {
+    alert(`Has añadido "${producto.nombre}" al carrito 🛒`);
+  }
+
 }

@@ -21,5 +21,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/contacto/pages/contacto/contacto').then((m) => m.Contacto)
   },
+  {
+    path: 'carrito',
+    loadComponent: () =>
+      import('./features/productos/pages/carrito/carrito').then((m) => m.Carrito)
+  },
   { path: '**', redirectTo: '' }
 ];

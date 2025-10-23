@@ -1,0 +1,35 @@
+<div>
+  <h2>🛒 Carrito de Compras</h2>
+  <p class="descripcion-pagina">
+    Revisa los productos que has agregado a tu carrito. Puedes modificar cantidades o eliminar artículos antes de proceder al pago.
+  </p>
+
+  <!-- 🧾 LISTADO DE PRODUCTOS EN EL CARRITO -->
+  <section class="carrito-lista">
+    @if (carrito.length === 0) {
+      <p class="sin-resultados">Tu carrito está vacío. ¡Agrega algunos productos!</p>
+    } @else {
+      @for (producto of carrito; track producto.id) {
+        <div class="carrito-item">
+          <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+          <div class="detalles-producto">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Precio: ${{ producto.precio }}</p>
+            <p>Cantidad:
+              <input type="number" [(ngModel)]="producto.cantidad" min="1" (change)="actualizarCantidad(producto)">
+            </p>
+          </div>
+          <button mat-icon-button color="warn" (click)="eliminarDelCarrito(producto.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      }
+      <div class="total-carrito">
+        <h3>Total: ${{ calcularTotal() }}</h3>
+        <button mat-raised-button color="primary" (click)="procederAlPago()">
+          Proceder al Pago
+        </button>
+      </div>
+    }
+  </section>
+</div>
