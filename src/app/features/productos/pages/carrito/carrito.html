@@ -1,10 +1,12 @@
-<div>
+<div class="encabezado-carrito">
   <h2>🛒 Carrito de Compras</h2>
   <p class="descripcion-pagina">
     Revisa los productos que has agregado a tu carrito. Puedes modificar cantidades o eliminar artículos antes de proceder al pago.
   </p>
+</div>
 
-  <!-- 🧾 LISTADO DE PRODUCTOS EN EL CARRITO -->
+<div class="carrito-contenedor">
+
   <section class="carrito-lista">
     @if (carrito.length === 0) {
       <p class="sin-resultados">Tu carrito está vacío. ¡Agrega algunos productos!</p>
@@ -12,24 +14,44 @@
       @for (producto of carrito; track producto.id) {
         <div class="carrito-item">
           <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+
           <div class="detalles-producto">
-            <h3>{{ producto.nombre }}</h3>
-            <p>Precio: ${{ producto.precio }}</p>
-            <p>Cantidad:
-              <input type="number" [(ngModel)]="producto.cantidad" min="1" (change)="actualizarCantidad(producto)">
-            </p>
+            <div class="info">
+              <h3>{{ producto.nombre }}</h3>
+              <p>Precio unitario: <span>${{ producto.precio }}</span></p>
+            </div>
+
+            <div class="cantidad-control">
+              <label for="cantidad-{{ producto.id }}">Cantidad:</label>
+              <input
+                id="cantidad-{{ producto.id }}"
+                type="number"
+                [(ngModel)]="producto.cantidad"
+                min="1"
+                (change)="actualizarCantidad(producto)">
+            </div>
+
+            <div class="boton-eliminar">
+              <button mat-icon-button color="warn" (click)="eliminarDelCarrito(producto.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
-          <button mat-icon-button color="warn" (click)="eliminarDelCarrito(producto.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
         </div>
       }
-      <div class="total-carrito">
-        <h3>Total: ${{ calcularTotal() }}</h3>
-        <button mat-raised-button color="primary" (click)="procederAlPago()">
-          Proceder al Pago
-        </button>
-      </div>
     }
   </section>
+
+  @if (carrito.length > 0) {
+    <div class="total-carrito">
+      <div class="total-detalle">
+        <h3>Total:</h3>
+        <span class="precio-final">${{ calcularTotal() }}</span>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="procederAlPago()">
+        Proceder al Pago
+      </button>
+    </div>
+  }
 </div>

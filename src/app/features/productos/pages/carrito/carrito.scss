@@ -1,110 +1,232 @@
-// Paleta de colores personalizada
-$color-bg: #0f1b2b;
-$color-accent: #a5cf47;
-$color-white: #ffffff;
-$color-gray: #cbd5e1;
-$color-card: #16263d;
+// ===================================================
+// PALETA DE COLORES Y VARIABLES REFINADAS
+// ===================================================
+$color-bg: #0b111a;        // Fondo más profundo (casi negro con azul)
+$color-accent: #a5cf47;    // Azul cian/Turquesa frío y elegante
+$color-white: #e0e0e0;     // Blanco suave, menos agresivo
+$color-gray: #8a96a3;      // Gris medio para texto secundario
+$color-card: #121c2c;      // Tarjeta ligeramente más oscura que el fondo
+$color-button-hover: #000000; // Color de texto para botón de checkout
+$color-warn: #ef4444;      // Color de advertencia (para botón de eliminar)
 
-// ======== ESTILO GENERAL ========
+// Mixin para un efecto sutil de resplandor
+@mixin soft-glow($color) {
+  box-shadow: 0 0 1px 0 rgba($color, 0.6), 0 0 5px 0 rgba($color, 0.2);
+}
+
+// ===================================================
+// ESTILO GENERAL
+// ===================================================
 :host {
   display: block;
   background-color: $color-bg;
   color: $color-white;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 3rem 2rem; // Más padding para aire
   font-family: 'Inter', sans-serif;
+  line-height: 1.6; // Mejor legibilidad
 }
 
 // ======== ENCABEZADO ========
+.encabezado-carrito {
+  max-width: 800px;
+  margin: 0 auto 3rem; // Espacio inferior más grande
+}
+
 h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
   color: $color-accent;
   text-align: center;
+  font-weight: 700; // Más negrita
+  letter-spacing: -0.05em; // Letter spacing sutil
 }
 
 .descripcion-pagina {
   color: $color-gray;
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  margin-bottom: 0;
+  font-size: 1.05rem;
+  font-weight: 300; // Peso más ligero para el subtítulo
 }
 
-// ======== LISTADO DEL CARRITO ========
+// ===================================================
+// LAYOUT PRINCIPAL (Lista + Total)
+// ===================================================
+.carrito-contenedor {
+  display: grid;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 300px; // Layout de dos columnas para el total
+}
+
 .carrito-lista {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 1.2rem; // Un poco menos de espacio entre items
 }
 
-// ======== ITEM DEL CARRITO ========
+// ===================================================
+// ITEM DEL CARRITO
+// ===================================================
 .carrito-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: $color-card;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  padding: 1.2rem 1.8rem;
+  border-radius: 16px; // Bordes un poco más grandes
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba($color-accent, 0.1); // Sombra elegante y borde sutil
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+    transform: translateY(-5px); // Más impacto
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba($color-accent, 0.2);
   }
 }
 
 // ======== IMAGEN DEL PRODUCTO ========
 .imagen-producto {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-right: 1rem;
+  border-radius: 10px;
+  margin-right: 1.5rem;
   flex-shrink: 0;
+  border: 1px solid rgba($color-gray, 0.1);
 }
 
 // ======== DETALLES ========
 .detalles-producto {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  display: grid;
+  grid-template-columns: 1fr 100px; // Nombre/Precio y Cantidad/Eliminar
+  align-items: center;
+  gap: 1rem;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: $color-white;
+    font-weight: 600;
   }
 
   p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: $color-gray;
+    margin: 0;
+  }
+
+  // Controles de cantidad
+  .cantidad-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    label {
+      font-size: 0.9rem;
+      color: $color-gray;
+      white-space: nowrap;
+    }
   }
 
   input[type="number"] {
-    width: 60px;
-    padding: 0.3rem;
-    border: none;
-    border-radius: 6px;
-    background-color: lighten($color-card, 5%);
+    width: 55px;
+    padding: 0.4rem 0.2rem;
+    border: 1px solid rgba($color-accent, 0.3);
+    border-radius: 8px;
+    background-color: transparent; // Fondo transparente
     color: $color-white;
     text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
 
     &:focus {
-      outline: 2px solid $color-accent;
+      outline: none;
+      border-color: $color-accent;
+      @include soft-glow($color-accent); // Aplica el resplandor
     }
   }
 }
 
 // ======== BOTÓN DE ELIMINAR ========
-button[color="warn"] {
-  color: $color-gray;
-  transition: color 0.2s ease;
+.boton-eliminar {
+  button[color="warn"] {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: $color-gray;
+    transition: color 0.2s ease, transform 0.2s ease;
 
-  &:hover {
-    color: $color-accent;
+    &:hover {
+      color: $color-warn;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// ===================================================
+// TOTAL (CHECKOUT)
+// ===================================================
+.total-carrito {
+  position: sticky; // Lo mantiene visible al hacer scroll
+  top: 3rem;
+  height: fit-content;
+
+  background-color: $color-card;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba($color-accent, 0.15); // Borde sutil
+
+  .total-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba($color-gray, 0.1);
+
+    h3 {
+      margin: 0;
+      color: $color-white;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .precio-final {
+      color: $color-accent;
+      font-size: 1.8rem;
+      font-weight: 800; // Extra negrita
+    }
+  }
+
+  button {
+    width: 100%;
+    background-color: $color-accent;
+    color: $color-button-hover; // Texto negro o muy oscuro
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($color-accent, 10%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba($color-accent, 0.4);
+    }
   }
 }
 
@@ -113,48 +235,75 @@ button[color="warn"] {
   text-align: center;
   color: $color-gray;
   font-style: italic;
-  margin-top: 3rem;
+  font-size: 1.1rem;
+  padding: 5rem 0;
+  border: 1px dashed rgba($color-gray, 0.3);
+  border-radius: 12px;
+  margin-top: 2rem;
+  grid-column: 1 / -1; // Ocupa todo el ancho si el carrito está vacío
 }
 
-// ======== TOTAL ========
-.total-carrito {
-  background-color: darken($color-card, 3%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: right;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 
-  h3 {
-    margin-bottom: 1rem;
-    color: $color-accent;
-    font-size: 1.3rem;
+// ===================================================
+// RESPONSIVE
+// ===================================================
+@media (max-width: 900px) {
+  // Cambia el layout principal a una sola columna
+  .carrito-contenedor {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
-  button {
-    background-color: $color-accent;
-    color: $color-bg;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 0.6rem 1.2rem;
-    transition: all 0.2s ease;
+  .total-carrito {
+    position: relative; // Desactiva el sticky en móviles
+    top: 0;
+    text-align: center;
+    order: 1; // Coloca el total al principio en móviles
 
-    &:hover {
-      background-color: lighten($color-accent, 5%);
-      transform: translateY(-2px);
+    .total-detalle {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .precio-final {
+        font-size: 2rem;
+      }
     }
   }
 }
 
-// ======== RESPONSIVE ========
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .carrito-item {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 1rem;
   }
 
-  .total-carrito {
-    text-align: center;
+  .imagen-producto {
+    margin-right: 0;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .detalles-producto {
+    grid-template-columns: 1fr auto;
+
+    .cantidad-control {
+      justify-content: flex-start;
+      margin-top: 0.5rem;
+      grid-column: 1 / -1;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      input[type="number"] {
+        width: 100%;
+        max-width: 80px;
+      }
+    }
+
+    .boton-eliminar {
+      align-self: flex-start;
+    }
   }
 }
-

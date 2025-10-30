@@ -8,45 +8,41 @@
     </p>
   </section>
 
-  <!-- 🎛️ FILTROS -->
   <section class="filtros">
-    <!-- 🔍 Búsqueda -->
-    <mat-form-field appearance="outline" class="campo-busqueda">
-      <mat-label>Buscar producto</mat-label>
-      <input
-        matInput
-        placeholder="Ej. Laptop, Monitor, Impresora"
-        [(ngModel)]="filtroBusqueda"
-        (input)="actualizarFiltro()" />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="campo-busqueda">
+    <mat-label>Buscar producto</mat-label>
+    <input
+      matInput
+      placeholder="Ej. Laptop, Monitor, Impresora"
+      [(ngModel)]="filtroBusqueda"
+      (input)="actualizarFiltro()" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 
-    <!-- 🗂️ Categoría -->
-    <mat-form-field appearance="outline" class="campo-categoria">
-      <mat-label>Categoría</mat-label>
-      <mat-select [(ngModel)]="categoriaSeleccionada" (selectionChange)="actualizarFiltro()">
-        <mat-option value="">Todas</mat-option>
-        @for (cat of categorias; track cat) {
-          <mat-option [value]="cat">{{ cat }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="campo-categoria">
+    <mat-label>Categoría</mat-label>
+    <mat-select [(ngModel)]="categoriaSeleccionada" (selectionChange)="actualizarFiltro()">
+      <mat-option value="">Todas</mat-option>
+      @for (cat of categorias; track cat) {
+        <mat-option [value]="cat">{{ cat }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-    <!-- 💰 Precio -->
-    <div class="campo-precio">
-      <label>Rango de precio</label>
-      <mat-slider
-        min="0"
-        max="10000"
-        step="100"
-        thumbLabel
-        tickInterval="1000"
-        [(ngModel)]="precioMaximo"
-        (input)="actualizarFiltro()">
-      </mat-slider>
-      <span class="precio-valor">Hasta ${{ precioMaximo }}</span>
-    </div>
-  </section>
+  <div class="campo-precio">
+    <label>Rango de precio</label>
+    <mat-slider
+      min="0"
+      max="10000"
+      step="100"
+      thumbLabel
+      tickInterval="1000"
+      [(ngModel)]="precioMaximo"
+      (input)="actualizarFiltro()">
+    </mat-slider>
+    <span class="precio-valor">Hasta ${{ precioMaximo }}</span>
+  </div>
+</section>
 
   <!-- 🧩 LISTADO DE PRODUCTOS -->
   <section class="productos-grid">
@@ -64,8 +60,13 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button color="accent" class="boton-comprar">
-              🛒 Agregar al carrito
+            <button
+            mat-raised-button
+            color="accent"
+            class="boton-comprar"
+            (click)="agregarAlCarrito(item)"
+            >
+            🛒 Agregar al carrito
             </button>
             <button mat-stroked-button color="primary" class="boton-detalle">
               🔍 Ver detalles

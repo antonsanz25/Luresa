@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { CartService } from '../../../features/productos/pages/carrito/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -34,14 +34,26 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatBadgeModule,
     MatDividerModule,
-]
+  ]
 })
-export class Navbar {
+export class Navbar implements OnInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @Output() themeToggle = new EventEmitter<void>();
+
   cartCount = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService
+  ) {}
+
+  ngOnInit() {
+    // Suscribirse al carrito para contar productos
+    this.cartService.carrito$.subscribe(items => {
+      // Sumar todas las cantidades del carrito
+      this.cartCount = items.reduce((acc, item) => acc + item.cantidad, 0);
+    });
+  }
 
   onSearch(query?: string) {
     const q = (query || '').trim();
@@ -54,7 +66,6 @@ export class Navbar {
     this.themeToggle.emit();
   }
 
-  // abrir/cerrar con seguridad
   toggleSidenav() {
     if (!this.sidenav) return;
     this.sidenav.toggle();

@@ -20,8 +20,11 @@
   <div class="actions">
     <div class="cart-icon" routerLink="/carrito">
       <mat-icon>shopping_cart</mat-icon>
+      @if (cartCount > 0) {
       <span class="cart-badge">{{ cartCount }}</span>
+      }
     </div>
+
     <button mat-icon-button [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
@@ -34,12 +37,7 @@
 
 <!-- Contenedor que NO empuja el contenido -->
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #sidenav
-    mode="over"
-    position="start"
-    class="mobile-sidenav"
-    (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav mode="over" position="start" class="mobile-sidenav" (backdropClick)="sidenav.close()">
     <nav class="mobile-links">
       <a mat-button routerLink="/inicio" (click)="sidenav.close()">Inicio</a>
       <a mat-button routerLink="/productos" (click)="sidenav.close()">Productos</a>
