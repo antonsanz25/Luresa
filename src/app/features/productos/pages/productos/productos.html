@@ -68,7 +68,11 @@
             >
             🛒 Agregar al carrito
             </button>
-            <button mat-stroked-button color="primary" class="boton-detalle">
+            <button
+              mat-stroked-button
+              color="primary"
+              class="boton-detalle"
+              (click)="verDetalles(item)">
               🔍 Ver detalles
             </button>
           </mat-card-actions>

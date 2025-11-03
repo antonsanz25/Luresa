@@ -1,0 +1,31 @@
+<div class="detalle-producto-modal">
+  <div class="imagen-container">
+    <img [src]="data.imagen" alt="{{ data.nombre }}" />
+  </div>
+
+  <div class="contenido">
+    <h2>{{ data.nombre }}</h2>
+
+    <p class="descripcion">{{ data.descripcion }}</p>
+
+    <div class="info">
+      <div class="info-item">
+        <span class="label">💲 Precio:</span>
+        <span class="valor precio">${{ data.precio }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">📦 Stock:</span>
+        <span class="valor">{{ data.cantidad }}</span>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <button mat-stroked-button color="warn" (click)="cerrar()">
+        ✖ Cerrar
+      </button>
+      <button mat-raised-button color="primary">
+        🛒 Agregar al carrito
+      </button>
+    </div>
+  </div>
+</div>

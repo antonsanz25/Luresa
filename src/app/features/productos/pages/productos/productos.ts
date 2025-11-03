@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { CartService, Producto } from '../carrito/cart.service';
+import { DetalleProducto } from '../detalle-producto/detalle-producto';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -24,6 +26,7 @@ import { CartService, Producto } from '../carrito/cart.service';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+
   ],
   templateUrl: './productos.html',
   styleUrls: ['./productos.scss']
@@ -112,7 +115,15 @@ export class Productos implements OnInit {
   productosFiltrados = [...this.lista];
 
   // 👇 Inyecta el servicio en el constructor
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private dialog : MatDialog) {}
+
+  // Detalles de producto en un diálogo
+  verDetalles(producto: any) {
+    this.dialog.open(DetalleProducto, {
+      width: '500px',
+      data: producto
+    });
+  }
 
   ngOnInit() {
     this.actualizarFiltro();
@@ -134,4 +145,6 @@ export class Productos implements OnInit {
     this.cartService.agregarProducto(producto);
     alert(`"${producto.nombre}" fue agregado al carrito 🛒`);
   }
+
+
 }
