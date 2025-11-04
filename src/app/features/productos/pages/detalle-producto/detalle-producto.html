@@ -23,9 +23,15 @@
       <button mat-stroked-button color="warn" (click)="cerrar()">
         ✖ Cerrar
       </button>
-      <button mat-raised-button color="primary">
-        🛒 Agregar al carrito
-      </button>
+      <!-- 🧩 Item, cambiar por data -->
+      <button
+            mat-raised-button
+            color="accent"
+            class="boton-comprar"
+            (click)="agregarAlCarrito(data)"
+            >
+            🛒 Agregar al carrito
+            </button>
     </div>
   </div>
 </div>

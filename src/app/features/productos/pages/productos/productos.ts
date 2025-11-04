@@ -11,6 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CartService, Producto } from '../carrito/cart.service';
 import { DetalleProducto } from '../detalle-producto/detalle-producto';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -115,7 +116,7 @@ export class Productos implements OnInit {
   productosFiltrados = [...this.lista];
 
   // 👇 Inyecta el servicio en el constructor
-  constructor(private cartService: CartService, private dialog : MatDialog) {}
+  constructor(private cartService: CartService, private dialog : MatDialog, private snackBar: MatSnackBar) {}
 
   // Detalles de producto en un diálogo
   verDetalles(producto: any) {
@@ -140,11 +141,27 @@ export class Productos implements OnInit {
     });
   }
 
-  // 🛒 NUEVO: agregar al carrito usando el servicio
+  // 🛒 NUEVO: agregar al carrito usando el servicio y mostrar Snackbar
   agregarAlCarrito(producto: Producto) {
     this.cartService.agregarProducto(producto);
-    alert(`"${producto.nombre}" fue agregado al carrito 🛒`);
+
+    // Abrir el Snackbar (similar a un modal, pero más ligero)
+    this.snackBar.open(
+      `!Listo¡"${producto.nombre}" fue agregado al carrito 🛒`, // Mensaje
+      'Ver Carrito', // Acción (botón en el snackbar)
+      {
+        duration: 3500, // Duración de 3 segundos
+        horizontalPosition: 'center', // Posición a la derecha
+        verticalPosition: 'top', // Posición en la parte superior
+        panelClass: ['snackbar-moderno'] // Clase CSS personalizada para estilos
+      }
+    ).onAction().subscribe(() => {
+      // Lógica para cuando el usuario hace clic en 'Ver Carrito'
+      // Por ejemplo: this.router.navigate(['/carrito']);
+      console.log('Navegar al carrito');
+    });
   }
+
 
 
 }
