@@ -1,0 +1,105 @@
+:host {
+  display: block;
+  max-width: 420px;
+  font-family: "Inter", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* Contenedor principal del modal */
+.modal-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.45s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Icono superior */
+.icono {
+  background: linear-gradient(135deg, #a5cf47, #a5cf47);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.2rem;
+  color: #fff;
+  font-size: 40px;
+  box-shadow: 0 8px 18px rgba(76, 175, 80, 0.35);
+  animation: bounceIn 0.6s ease;
+}
+
+/* Título */
+h2 {
+  margin: 0.5rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Texto */
+p {
+  color: #475569;
+  font-size: 1rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+/* Botones */
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.acciones button {
+  min-width: 130px;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #a5cf47, #a5cf47);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.25);
+}
+
+.acciones button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(76, 175, 80, 0.35);
+}
+
+/* Animaciones */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
