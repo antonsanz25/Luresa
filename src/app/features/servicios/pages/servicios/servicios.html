@@ -6,130 +6,33 @@
   </p>
 
   <div class="grid">
-    <section class="servicios-container" aria-labelledby="servicios-title">
-  <div class="grid">
-    <!-- 1. Venta de productos -->
-    <article class="card" role="article" aria-labelledby="srv-productos">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6l3-3h12l3 3v15H3V6z" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-productos">Venta de productos</h3>
-      </header>
-      <p class="lead">Productos de calidad y a buen precio.</p>
-      <ul>
-        <li>Equipos de cómputo, accesorios y repuestos</li>
-        <li>Licencias originales de software</li>
-        <li>Precios competitivos y promociones</li>
-      </ul>
-      <footer class="card-footer">
-        <small>Entrega inmediata o según disponibilidad</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
+    @for (servicio of servicios; track servicio.titulo) {
+      <mat-card class="servicio-card" appearance="outlined" role="article">
+        <mat-card-header>
+          
+          <mat-card-title>{{ servicio.titulo }}</mat-card-title>
+        </mat-card-header>
 
-    <!-- 2. Soporte Técnico -->
-    <article class="card" role="article" aria-labelledby="srv-soporte">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.6,10a7,7,0,1,1,10.8,0" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="12" cy="14" r="1" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-soporte">Soporte Técnico</h3>
-      </header>
-      <p class="lead">Asistencia personalizada en cada compra o instalación.</p>
-      <ul>
-        <li>Atención remota o presencial</li>
-        <li>Diagnóstico de fallas y soluciones</li>
-        <li>Guía en tiempo real</li>
-      </ul>
-      <footer class="card-footer">
-        <small>Disponible 24/7 bajo contrato</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
+        <mat-card-content>
+          <p class="lead">{{ servicio.descripcion }}</p>
 
-    <!-- 3. Envíos Seguros -->
-    <article class="card" role="article" aria-labelledby="srv-envios">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h13v13H3zM16 9h5v10h-5z" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-envios">Envíos Seguros</h3>
-      </header>
-      <p class="lead">Entregas rápidas y confiables.</p>
-      <ul>
-        <li>Cobertura local y nacional</li>
-        <li>Empaque seguro y rastreo en tiempo real</li>
-        <li>Garantía de recepción</li>
-      </ul>
-      <footer class="card-footer">
-        <small>1 a 3 días hábiles</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
+          <ul>
+            @for (item of servicio.detalles; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </mat-card-content>
 
-    <!-- 4. Reparación de Hardware -->
-    <article class="card" role="article" aria-labelledby="srv-reparacion">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20.7 7.3l-4-4a1 1 0 00-1.4 0L13 5.6 18.4 11l2.3-2.3a1 1 0 000-1.4zM3 17v4h4l10.3-10.3-4-4L3 17z" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-reparacion">Reparación de Hardware</h3>
-      </header>
-      <p class="lead">Dejamos como nuevos tus productos.</p>
-      <ul>
-        <li>Cambio de partes dañadas</li>
-        <li>Limpieza interna y mantenimiento</li>
-        <li>Diagnóstico completo</li>
-      </ul>
-      <footer class="card-footer">
-        <small>De 1 a 5 días según complejidad</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" (click)="openDetalleModal(servicio)">
+            Ver más
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
 
-    <!-- 5. Instalación de Software -->
-    <article class="card" role="article" aria-labelledby="srv-software">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2L6 9h4v6h4V9h4z" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-software">Instalación de Software</h3>
-      </header>
-      <p class="lead">Instalación y configuración de sistemas operativos y software.</p>
-      <ul>
-        <li>Windows, Linux, Office, antivirus, etc.</li>
-        <li>Configuración de redes y usuarios</li>
-        <li>Activación y licenciamiento</li>
-      </ul>
-      <footer class="card-footer">
-        <small>En el mismo día o al siguiente</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
-
-    <!-- 6. Actualización de Hardware -->
-    <article class="card" role="article" aria-labelledby="srv-actualizacion">
-      <header class="card-header">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 4h16v2H4V4zm0 6h16v2H4v-2zm0 6h10v2H4v-2z" fill="currentColor"/>
-        </svg>
-        <h3 id="srv-actualizacion">Actualización de Hardware</h3>
-      </header>
-      <p class="lead">Mejoramos el rendimiento de tus equipos.</p>
-      <ul>
-        <li>Ampliación de memoria RAM y SSD</li>
-        <li>Actualización de tarjeta gráfica o CPU</li>
-        <li>Instalación de nuevos periféricos</li>
-      </ul>
-      <footer class="card-footer">
-        <small>De 2 a 4 días según disponibilidad</small>
-        <a class="btn" href="#">Ver más</a>
-      </footer>
-    </article>
+    @empty {
+      <p class="no-servicios">No hay servicios disponibles por el momento.</p>
+    }
   </div>
-</section>
-  </div>
-
 </section>
