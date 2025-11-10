@@ -1,0 +1,41 @@
+<section class="detalle-servicio">
+  <header class="header-servicio">
+    <h1>{{ titulo }}</h1>
+    <p class="subtitulo">{{ subtitulo }}</p>
+  </header>
+
+  <div class="imagen-container">
+    <img [src]="imagen" alt="{{ titulo }}" class="imagen-servicio" />
+  </div>
+
+  <article class="contenido">
+    <h2>Descripción del servicio</h2>
+    <p>{{ descripcion }}</p>
+
+    <h3>Características principales</h3>
+    <ul>
+      @for (item of caracteristicas; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+
+    <h3>Beneficios</h3>
+    <ul>
+      @for (beneficio of beneficios; track beneficio) {
+        <li>{{ beneficio }}</li>
+      }
+    </ul>
+
+    <h3>Por qué elegirnos</h3>
+    <p>{{ confianza }}</p>
+  </article>
+
+  <div class="acciones">
+    <button mat-raised-button color="primary" routerLink="/contacto">
+      Solicitar servicio
+    </button>
+    <button mat-stroked-button routerLink="/servicios">
+      Volver a servicios
+    </button>
+  </div>
+</section>

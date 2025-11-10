@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DetalleModal, DetalleModalData } from './detalle-modal/detalle-modal';
+import { Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 
@@ -18,8 +17,8 @@ import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle } 
   styleUrls: ['./servicios.scss']
 })
 export class Servicios {
-  // Array completo de servicios
-  servicios: DetalleModalData[] = [
+
+  servicios = [
     {
       titulo: 'Venta de productos',
       descripcion: 'Productos de calidad y a buen precio.',
@@ -28,7 +27,7 @@ export class Servicios {
         'Licencias originales de software',
         'Precios competitivos y promociones'
       ],
-      ruta: '/productos',
+      ruta: '/servicios/detalle-productos',
       imagen: 'https://ibo.pe/blog/wp-content/uploads/2020/01/pasarelas-de-pago.jpg'
     },
     {
@@ -39,7 +38,7 @@ export class Servicios {
         'Diagnóstico de fallas y soluciones',
         'Guía en tiempo real'
       ],
-      ruta: '/soporte',
+      ruta: '/servicios/detalle-soporte',
       imagen: 'https://universidadeuropea.com/resources/media/images/soporte-tecnico-800x450.original.jpg'
     },
     {
@@ -50,7 +49,7 @@ export class Servicios {
         'Empaque seguro y rastreo en tiempo real',
         'Garantía de recepción'
       ],
-      ruta: '/envios',
+      ruta: '/servicios/detalle-envios',
       imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEUgvo1g3o-Li4ZPd_HOPj7REHl2cmPDLxaQ&s'
     },
     {
@@ -61,7 +60,7 @@ export class Servicios {
         'Limpieza interna y mantenimiento',
         'Diagnóstico completo'
       ],
-      ruta: '/reparacion',
+      ruta: '/servicios/detalle-reparacion',
       imagen: 'https://www.infouni.uni.edu.pe/storage/programas/qcnslEFNliUtvbnuqIjSrQ5E5KCQmpBxev7xVKz0.jpg'
     },
     {
@@ -72,7 +71,7 @@ export class Servicios {
         'Configuración de redes y usuarios',
         'Activación y licenciamiento'
       ],
-      ruta: '/instalacion',
+      ruta: '/servicios/detalle-instalacion',
       imagen: 'https://i.ytimg.com/vi/FhPtZm3_hBw/maxresdefault.jpg'
     },
     {
@@ -83,19 +82,15 @@ export class Servicios {
         'Actualización de tarjeta gráfica o CPU',
         'Instalación de nuevos periféricos'
       ],
-      ruta: '/actualizacion',
+      ruta: '/servicios/detalle-actualizacion',
       imagen: 'https://www.crucial.com/content/dam/ballistix/brand-assets/photography/builds/team-ballistix-memorial-pc-build/041019_Ballistix_Team_Ballistix_Memorial_Build_Image_02.PSD.transform/medium-jpg/img.jpg'
     }
   ];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private router: Router) {}
 
-  // Abrir modal con los datos del servicio
-  openDetalleModal(servicio: DetalleModalData) {
-    this.dialog.open(DetalleModal, {
-      width: '620px',
-      data: servicio,
-      panelClass: 'custom-modal'
-    });
+  verDetalles(servicio: any) {
+    this.router.navigate([servicio.ruta]);
   }
+
 }

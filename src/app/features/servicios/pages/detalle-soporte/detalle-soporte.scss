@@ -1,0 +1,125 @@
+.detalle-servicio {
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.03);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+.header-servicio {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-servicio h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  color: #23306e;
+  letter-spacing: -1px;
+}
+
+.header-servicio .subtitulo {
+  font-size: 1.27rem;
+  color: #4d5b7c;
+  font-weight: 500;
+}
+
+.imagen-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.imagen-servicio {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44,92,215,0.06);
+  object-fit: cover;
+}
+
+.contenido h2, .contenido h3 {
+  color: #244187;
+  margin-top: 1.3rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+
+.contenido p {
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: #2f3640;
+  margin-bottom: 1.3rem;
+}
+
+.contenido ul {
+  margin: 0 0 1rem 1.5rem;
+  padding: 0;
+  list-style: disc inside;
+}
+
+.contenido li {
+  font-size: 1.02rem;
+  color: #34405a;
+  margin-bottom: 0.47rem;
+  background: none;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.acciones button {
+  min-width: 165px;
+  font-size: 1.07rem;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: background 0.16s, color 0.16s;
+}
+
+.acciones button[mat-raised-button] {
+  background: linear-gradient(90deg,#4870fa 0%,#244187 100%);
+  color: #fff;
+  font-weight: 600;
+}
+
+.acciones button[mat-raised-button]:hover {
+  background: linear-gradient(90deg,#23306e 0%,#4870fa 100%);
+}
+
+.acciones button[mat-stroked-button] {
+  color: #244187;
+  border: 1.5px solid #244187;
+  background: #f7f9fd;
+  font-weight: 600;
+}
+
+.acciones button[mat-stroked-button]:hover {
+  background: #edf2fc;
+  border-color: #4870fa;
+  color: #4870fa;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  .detalle-servicio {
+    padding: 1.6rem 1rem;
+  }
+  .imagen-servicio {
+    max-width: 100%;
+  }
+}
