@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-instalacion',
-  imports: [],
+  imports: [
+    MatIcon,
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './detalle-instalacion.html',
   styleUrl: './detalle-instalacion.scss'
 })
@@ -31,4 +38,19 @@ export class DetalleInstalacion {
     siguiendo buenas prácticas de TI y seguridad informática.
   `;
 
+  // === NUEVA SECCIÓN: POR QUÉ ELEGIRNOS ===
+  porqueElegirnos = {
+    titulo: '¿Por qué elegirnos?',
+    icono: 'verified',
+    descripcion: `
+      En LURESA nos especializamos en instalaciones seguras, legales y optimizadas.
+      Adaptamos cada entorno según las necesidades del cliente, garantizando estabilidad,
+      seguridad y rendimiento a largo plazo.
+    `,
+    stats: [
+      { valor: '+800', texto: 'Instalaciones completadas' },
+      { valor: '98%', texto: 'Satisfacción de clientes' },
+      { valor: '24/7', texto: 'Soporte dsiponible' }
+    ]
+  };
 }

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { CartService, Producto } from '../carrito/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AgregadoCarritoModal } from '../../../../shared/components/agregado-carrito-modal/agregado-carrito-modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-producto',
+
   imports: [],
   templateUrl: './detalle-producto.html',
   styleUrl: './detalle-producto.scss'
@@ -16,7 +19,8 @@ export class DetalleProducto {
     public dialogRef: MatDialogRef<DetalleProducto>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private cartService: CartService,
-    private snackBar: MatSnackBar
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   cerrar(): void{
@@ -24,22 +28,15 @@ export class DetalleProducto {
   }
 
   agregarAlCarrito(producto: Producto) {
-      this.cartService.agregarProducto(producto);
-
-      // Abrir el Snackbar (similar a un modal, pero más ligero)
-      this.snackBar.open(
-        `!Listo¡"${producto.nombre}" fue agregado al carrito 🛒`, // Mensaje
-        'Ver Carrito', // Acción (botón en el snackbar)
-        {
-          duration: 3500, // Duración de 3 segundos
-          horizontalPosition: 'center', // Posición a la derecha
-          verticalPosition: 'top', // Posición en la parte superior
-          panelClass: ['snackbar-moderno'] // Clase CSS personalizada para estilos
-        }
-      ).onAction().subscribe(() => {
-        // Lógica para cuando el usuario hace clic en 'Ver Carrito'
-        // Por ejemplo: this.router.navigate(['/carrito']);
-        console.log('Navegar al carrito');
-      });
-    }
+    this.cartService.agregarProducto(producto);
+    const dialogRef = this.dialog.open(AgregadoCarritoModal, {
+      width: '400px',
+      data: { producto }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'verCarrito') {
+        this.router.navigate(['/carrito']);
+      }
+    });
+  }
 }

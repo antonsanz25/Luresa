@@ -13,6 +13,7 @@ import { DetalleProducto } from '../detalle-producto/detalle-producto';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregadoCarritoModal } from '../../../../shared/components/agregado-carrito-modal/agregado-carrito-modal';
 import { Router } from '@angular/router';
+import { FiltrosComponent } from '../filtros/filtros'
 
 
 @Component({
@@ -28,6 +29,7 @@ import { Router } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    FiltrosComponent
 
   ],
   templateUrl: './productos.html',
@@ -110,19 +112,28 @@ export class Productos implements OnInit {
     }
   ];
 
-  filtroBusqueda: string = '';
-  categoriaSeleccionada: string = '';
-  precioMaximo: number = 10000;
   categorias = ['Computadoras', 'Componentes', 'Perifericos', 'Tablets'];
-  productosFiltrados = [...this.lista];
+   productosFiltrados = [...this.lista];
 
   // 👇 Inyecta el servicio en el constructor
   constructor(
     private cartService: CartService,
-    private dialog : MatDialog,
-    private router:Router) {}
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
-  // Detalles de producto en un diálogo
+  ngOnInit() {}
+
+  aplicarFiltro(filtro: { texto: string; categoria: string; precioMaximo: number }) {
+    const { texto, categoria, precioMaximo } = filtro;
+    this.productosFiltrados = this.lista.filter(item => {
+      const coincideTexto = item.nombre.toLowerCase().includes(texto.toLowerCase());
+      const coincideCategoria = !categoria || item.categoria === categoria;
+      const coincidePrecio = item.precio <= precioMaximo;
+      return coincideTexto && coincideCategoria && coincidePrecio;
+    });
+  }
+
   verDetalles(producto: any) {
     this.dialog.open(DetalleProducto, {
       width: '500px',
@@ -130,26 +141,9 @@ export class Productos implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.actualizarFiltro();
-  }
-
-  actualizarFiltro() {
-    const texto = this.filtroBusqueda.toLowerCase();
-    this.productosFiltrados = this.lista.filter(item => {
-      const coincideTexto = item.nombre.toLowerCase().includes(texto);
-      const coincideCategoria =
-        !this.categoriaSeleccionada || item.categoria === this.categoriaSeleccionada;
-      const coincidePrecio = item.precio <= this.precioMaximo;
-      return coincideTexto && coincideCategoria && coincidePrecio;
-    });
-  }
-
-  // 🛒 NUEVO: agregar al carrito usando el servicio y mostrar Snackbar
   agregarAlCarrito(producto: Producto) {
     this.cartService.agregarProducto(producto);
-
-    const dialogRef =  this.dialog.open(AgregadoCarritoModal, {
+    const dialogRef = this.dialog.open(AgregadoCarritoModal, {
       width: '400px',
       data: { producto }
     });

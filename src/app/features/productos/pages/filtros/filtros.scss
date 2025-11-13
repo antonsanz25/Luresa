@@ -1,0 +1,135 @@
+// === VARIABLES ===
+$color-bg: #16263d;
+$color-prim: #a5cf47;
+$color-white: #ffffff;
+$color-gray: #cbd5e1;
+$color-card: #0f1b2b;
+
+// === ESTILOS DEL FILTRO ===
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+  padding: 1.5rem 2rem;
+  background: $color-card;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(10, 20, 34, 0.15);
+  transition: all 0.25s ease;
+
+  .campo {
+    background: $color-bg;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(16, 27, 43, 0.16);
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1 1 220px;
+
+    label {
+      color: $color-prim;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+    }
+
+    input[type="text"],
+    select {
+      background: transparent;
+      color: $color-white;
+      border: 2px solid transparent;
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      transition: 0.25s ease;
+      outline: none;
+
+      &:focus,
+      &:hover {
+        border-color: $color-prim;
+        box-shadow: 0 0 0 3px rgba($color-prim, 0.25);
+      }
+
+      option {
+        background: $color-bg;
+        color: $color-white;
+      }
+    }
+
+    .input-icono {
+      position: relative;
+
+      input {
+        width: 100%;
+        padding-right: 2.5rem;
+      }
+
+      .icono {
+        position: absolute;
+        right: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $color-prim;
+        font-size: 1.2rem;
+      }
+    }
+
+    // === Rango de precio ===
+    input[type="range"] {
+      width: 100%;
+      appearance: none;
+      height: 6px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, $color-prim 0%, $color-card 100%);
+      outline: none;
+      cursor: pointer;
+
+      &::-webkit-slider-thumb {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background: $color-prim;
+        border-radius: 50%;
+        border: 2px solid $color-white;
+        transition: 0.2s;
+      }
+
+      &::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 6px rgba($color-prim, 0.15);
+      }
+    }
+
+    .precio-valor {
+      color: $color-white;
+      font-weight: 500;
+      font-size: 1rem;
+      background: rgba($color-prim, 0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.5rem;
+      align-self: flex-end;
+      box-shadow: 0 2px 6px rgba($color-prim, 0.15);
+    }
+  }
+}
+
+// === RESPONSIVE ===
+@media (max-width: 900px) {
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .campo {
+    width: 100%;
+  }
+}
+
+// === FONDO PRINCIPAL ===
+body {
+  background: linear-gradient(120deg, $color-bg 80%, $color-card 100%);
+  font-family: 'Inter', sans-serif;
+}

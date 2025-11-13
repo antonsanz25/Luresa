@@ -1,0 +1,43 @@
+<section class="filtros">
+  <!-- Campo de búsqueda -->
+  <div class="campo campo-busqueda">
+    <label for="busqueda">Buscar producto</label>
+    <div class="input-icono">
+      <input
+        id="busqueda"
+        type="text"
+        placeholder="Ej. Laptop, Monitor, Impresora"
+        [(ngModel)]="filtroBusqueda"
+        (input)="actualizarFiltro()" />
+      <span class="icono">🔍</span>
+    </div>
+  </div>
+
+  <!-- Campo de categoría -->
+  <div class="campo campo-categoria">
+    <label for="categoria">Categoría</label>
+    <select
+      id="categoria"
+      [(ngModel)]="categoriaSeleccionada"
+      (change)="actualizarFiltro()">
+      <option value="">Todas</option>
+      @for (cat of categorias; track cat) {
+        <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Campo de rango de precio -->
+  <div class="campo campo-precio">
+    <label for="precio">Rango de precio</label>
+    <input
+      id="precio"
+      type="range"
+      min="0"
+      max="10000"
+      step="100"
+      [(ngModel)]="precioMaximo"
+      (input)="actualizarFiltro()" />
+    <span class="precio-valor">Hasta ${{ precioMaximo }}</span>
+  </div>
+</section>

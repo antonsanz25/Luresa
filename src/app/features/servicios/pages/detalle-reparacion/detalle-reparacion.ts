@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-reparacion',
-  imports: [],
+  imports: [
+    MatIcon,
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './detalle-reparacion.html',
   styleUrl: './detalle-reparacion.scss'
 })
@@ -30,5 +37,20 @@ export class DetalleReparacion {
     Nuestro laboratorio técnico cuenta con equipamiento avanzado y técnicos certificados
     que aseguran una reparación eficiente y de calidad.
   `;
+  // === NUEVA SECCIÓN: POR QUÉ ELEGIRNOS ===
+  porqueElegirnos = {
+    titulo: '¿Por qué elegirnos?',
+    icono: 'local_shipping',
+    descripcion: `
+      En LURESA combinamos experiencia técnica y compromiso con la calidad.
+      Diagnosticamos a fondo cada equipo para ofrecer reparaciones precisas, transparentes
+      y con resultados duraderos.
+    `,
+    stats: [
+      { valor: '+600', texto: 'Reparaciones exitosas' },
+      { valor: '99%', texto: 'Eficencia Comprobada' },
+      { valor: '48h', texto: 'Garantia de Servicios' }
+    ]
+  };
 
 }

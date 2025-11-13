@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-productos',
-  imports: [],
+  imports: [
+    MatIcon,
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './detalle-productos.html',
   styleUrl: './detalle-productos.scss'
 })
@@ -30,4 +37,18 @@ export class DetalleProductos {
     Trabajamos únicamente con distribuidores autorizados y marcas reconocidas.
     Nuestra misión es ofrecer soluciones confiables que impulsen la productividad de tu negocio o proyecto personal.
   `;
+  // === NUEVA SECCIÓN: POR QUÉ ELEGIRNOS ===
+  porqueElegirnos = {
+    titulo: '¿Por qué elegirnos?',
+    icono: 'local_shipping',
+    descripcion: `
+      En LURESA te ofrecemos solo productos originales, con garantía y soporte.
+      Nuestra prioridad es tu confianza: desde la compra hasta la entrega y asistencia postventa.
+    `,
+    stats: [
+      { valor: '+1200', texto: 'Ventas Realizadas' },
+      { valor: '100%', texto: 'Productos Certificados' },
+      { valor: '48h', texto: 'Entrega Garantizada' }
+    ]
+  };
 }

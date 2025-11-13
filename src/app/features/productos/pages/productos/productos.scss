@@ -45,104 +45,7 @@ $color-card: #16263d;
   box-shadow: 0 0 0 1px $color, 0 0 5px 0 rgba($color, 0.5);
 }
 
-/* ----------------------------------------------------- */
-/* === FILTROS ELEGANTES === */
-.filtros {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px; // Aumentamos un poco el espacio
-  background-color: lighten($color-card, 4%); // Fondo ligeramente más claro que las tarjetas de producto, pero oscuro
-  padding: 20px 30px; // Padding horizontal más amplio
-  border-radius: 12px;
-  // Sombra más sutil y un borde fino para "levantar" el panel
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  border-top: 1px solid rgba($color-accent, 0.2); // Borde superior sutil con el acento
-  width: 100%;
-  max-width: 1200px; // Un poco más de ancho
-  margin: 0 auto 50px auto; // Centrar y añadir margen inferior
-  transition: all 0.3s ease;
 
-  /* Propiedades Sticky (se mantienen) */
-  position: sticky;
-  top: 0px;
-  z-index: 10;
-
-  // Estilo para los campos de Material (Angular Material)
-  mat-form-field {
-    width: 280px; // Un poco más ancho
-
-    // **Refinando el estilo de los campos Outline**
-    .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-      color: $color-accent !important; // Outline activo con acento
-    }
-
-    .mat-form-field-outline-start,
-    .mat-form-field-outline-gap,
-    .mat-form-field-outline-end {
-      // Color del borde cuando el campo está inactivo
-      border-color: rgba($color-gray, 0.3) !important;
-      background-color: rgba($color-bg, 0.5); // Fondo sutilmente transparente
-      border-radius: 8px;
-    }
-
-    // Etiqueta (Placeholder/Label)
-    .mat-form-field-label {
-      color: $color-gray !important; // Etiqueta base en gris
-      font-weight: 500;
-    }
-
-    // Input y Select
-    input,
-    mat-select {
-      color: $color-white !important;
-      font-size: 16px; // Un poco más grande
-    }
-
-    // Íconos
-    mat-icon {
-      color: $color-accent; // Los íconos se ven mejor con el color acento
-    }
-  }
-
-  // Estilo para el campo de precio (Slider)
-  .campo-precio {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; // Centrar verticalmente con los campos de form
-    width: 280px;
-
-    label {
-      font-size: 16px;
-      font-weight: 600;
-      color: $color-accent;
-      margin-bottom: 5px;
-      text-align: left;
-    }
-
-    mat-slider {
-      width: 280px;
-      padding: 0 10px; // Espacio para el pulgar de la barra deslizadora
-      --mdc-slider-handle-color: $color-accent;
-      --mdc-slider-active-track-color: $color-accent;
-      --mdc-slider-inactive-track-color: rgba($color-gray, 0.3);
-      --mdc-slider-label-color: $color-bg; // Color del texto del thumb
-      --mdc-slider-label-background-color: $color-accent; // Color del thumb
-
-      &:focus {
-        @include focus-glow($color-accent); // Resplandor al interactuar
-      }
-    }
-
-    .precio-valor {
-      margin-top: 5px;
-      font-size: 15px;
-      color: $color-white; // El valor final es importante, coloréalo de blanco
-      font-weight: 500;
-      text-align: center;
-    }
-  }
-}
 
 // Responsive
 @media (max-width: 900px) {
@@ -282,7 +185,8 @@ $color-card: #16263d;
   text-align: center;
   color: lighten($color-gray, 10%);
   font-style: italic;
-  margin-top: 40px;
+  margin-top: 50px;
+  height: 100px;
 }
 
 
